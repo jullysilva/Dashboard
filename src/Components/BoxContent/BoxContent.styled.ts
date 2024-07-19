@@ -7,8 +7,8 @@ export interface IBoxContentProps extends PropsWithChildren<{}> {
   pad?: string;
   marg?: string;
   bg?: TPalette;
-  w?: string;
-  h?: string;
+  w?: string | number;
+  h?: string | number;
   inline?: boolean;
   center?: boolean;
   wrap?: boolean;

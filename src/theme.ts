@@ -9,5 +9,8 @@ export const theme = {
     dark: "#555555",
     primaryLight: "#f18abc",
     secondaryLight: "#747c9c",
+
+    danger: "#dc3545",
+    success: "#28a745",
   },
 };

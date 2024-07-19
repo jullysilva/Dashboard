@@ -8,7 +8,7 @@ import {
 
 const Card: React.FC<ICardProps> = ({ children, ...CardContentSCProps }) => {
   return (
-    <CardContainer>
+    <CardContainer w={CardContentSCProps.w} h={CardContentSCProps.h}>
       {CardContentSCProps.title && (
         <TitleContainer>
           <CardTitle>{CardContentSCProps.title}</CardTitle>

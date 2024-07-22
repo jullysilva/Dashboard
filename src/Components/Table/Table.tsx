@@ -30,7 +30,7 @@ const DataTable: React.FC<TableProps> = ({ data, columns }) => {
               if (column === "Status") {
                 return (
                   <StatusCell key={column} status={row[column] as number}>
-                    {row[column] === 1 ? "Ativo" : "Desativado"}
+                    {row[column] === 1 ? "Sucesso" : "Fracasso"}
                   </StatusCell>
                 );
               } else {

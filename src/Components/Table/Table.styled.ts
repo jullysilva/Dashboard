@@ -20,5 +20,10 @@ export const TableCell = styled.td`
 `;
 
 export const StatusCell = styled(TableCell)<{ status: number }>`
-  color: ${({ status }) => (status === 1 ? "#28a745" : "#dc3545")};
+  color: white;
+  text-align: center;
+  background-color: ${({ status }) => (status === 1 ? "#28a745" : "#dc3545")};
+  padding: 4px;
+  // border: 1px solid ${({ status }) =>
+    status === 1 ? "#28a745" : "#dc3545"};
 `;

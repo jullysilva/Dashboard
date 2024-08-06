@@ -1,0 +1,28 @@
+Customer;Server;Status;Step;Time
+ONEBEAT;ONEBEAT;1;INI;14:31:49
+Soneda;Current;2;AUTOLOAD;14:31:49
+Abracadabra;Current;2;PDIDASH;14:32:08
+Disantini;Current;2;PDIDASH;14:32:27
+Aramiss;Current;1;PROCESS_FULL;14:32:46
+miniPreco;Migration;1;Full;14:33:16
+jCanedo;Current;2;AutoLoader;14:33:52
+melissa;Current;1;Full;14:34:17
+grazziotin;Current;1;Full;14:35:01
+lenny;Current;2;Interfaces;14:35:27
+Nippocar;Current;1;Full;14:36:59
+Calvin Kleins;Current;2;AUTOLOAD;14:37:22
+natureza;Current;2;INTERFACES;14:37:44
+Havan;Current;2;Full;15:00:00
+FOM;Migration;2;INTERFACES;08:35:23
+Lojas Koerich;Current;1;Full;09:00:34
+Amaro;Current;1;Full;14:37:44
+Pneubrás;Current;1;Full;15:00:00
+Fillity;Current;1;Full;08:35:23
+Polo Wear;Current;1;Full;09:00:34
+Lofty Stlye;Current;1;Full;14:37:44
+Taco Jeans;Current;1;Full;15:00:00
+Pague Menos;Current;2;AUTOLOAD;08:35:23
+Aramis;Current;2;AUTOLOAD;09:00:34
+Grupo South;Current;1;Full;07:35:33
+Vivara;Current;1;Full;08:34:22
+S2;Current;1;Full;06:40:33

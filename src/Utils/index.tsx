@@ -1,7 +1,7 @@
 export const calculateEtapaCounts = (csvData) => {
   const counts: { [key: string]: number } = {};
   csvData.forEach((row) => {
-    const etapa = row.Etapa.toLowerCase();
+    const etapa = row.Step.toLowerCase();
     if (etapa) {
       counts[etapa] = (counts[etapa] || 0) + 1;
     }
@@ -12,11 +12,11 @@ export const calculateEtapaCounts = (csvData) => {
 export const calculateServerCounts = (csvData) => {
   const counts = { current: 0, migracao: 0, outros: 0 };
   csvData.forEach((row) => {
-    const servidor = row.Servidor ? row.Servidor.toLowerCase() : "";
+    const servidor = row.Server ? row.Server.toLowerCase() : "";
 
     if (servidor === "current") {
       counts.current += 1;
-    } else if (servidor === "migracao") {
+    } else if (servidor === "migration") {
       counts.migracao += 1;
     } else {
       counts.outros += 1;

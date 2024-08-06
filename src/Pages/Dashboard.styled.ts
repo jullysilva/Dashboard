@@ -34,8 +34,8 @@ export const TitleHeader = styled.h1<IDadhsboardProps>`
 `;
 
 export const Title = styled.p`
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 500;
 `;
 
 export const Text = styled.span<IText>`
@@ -48,15 +48,51 @@ export const Text = styled.span<IText>`
   font-weight: 400;
 `;
 
-export const Span = styled.span`
-  font-size: 1.5rem;
-  color: #2112121;
+export const SubText = styled(Text)`
+  ${({ theme, textColor = "black" }) => {
+    return {
+      color: theme.palette[textColor],
+    };
+  }}
+  font-size: 1rem;
+  font-weight: 500;
 `;
 
-export const Widget = styled.div`
-  margin: 0.5rem;
+export const Span = styled.span`
+  ${({ theme }) => {
+    return {
+      fontSize: "1rem",
+      color: theme.palette["secondaryLight"],
+    };
+  }}
+`;
+
+export const Divider = styled.hr`
+  border-top: 1px solid dark;
+  margin: 2px 32px;
+`;
+
+export const Status = styled.p<{ status: number }>`
+  ${({ theme, status }) => {
+    const color =
+      status === 1 ? theme.palette["success"] : theme.palette["danger"];
+
+    return {
+      color: theme.palette["white"],
+      backgroundColor: color,
+      borderRadius: "45px",
+      border: `1px solid ${color}`,
+      width: "6rem",
+      height: "auto",
+      margin: "10px 0",
+      textAlign: "center",
+    };
+  }}
+`;
+
+export const WidgetIcon = styled.div`
   border-radius: 3px;
-  padding: 1rem;
+  margin: 0 1rem 0 0;
 `;
 
 export const Box = styled.div<IBoxProps>`

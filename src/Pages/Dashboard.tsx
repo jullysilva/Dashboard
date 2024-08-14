@@ -193,25 +193,50 @@ export const Dashboard = ({ title }: DashboardProps) => {
         <Tooltip id="clients" />
       </BoxContent>
       <Divider />
-      <BoxInline pad="16" w="100%" flex={1} wrap>
-        {csvData.map((item, index) => (
-          <Card w="15%" key={index}>
-            <Text textColor="primary">{item.Customer}</Text>
-            <BoxContent>
-              <BoxInline w="100%" space="between">
-                <SubText textColor="dark">Status</SubText>
-                <Status status={item.Status as number}>
-                  {item.Status === 1 ? "Success" : "Failed"}
-                </Status>
-              </BoxInline>
-              <BoxInline w="100%" space="between">
-                <SubText textColor="dark">Step</SubText>
-                <Span>{item.Step}</Span>
-              </BoxInline>
-            </BoxContent>
-          </Card>
-        ))}
-      </BoxInline>
+      <BoxContent w="100%" inline>
+        <BoxInline pad="16" w="50%" flex={1} wrap>
+          {csvData
+            .filter((item) => item.Status === 1)
+            .map((item, index) => (
+              <Card w="30%" key={index}>
+                <Text textColor="primary">{item.Customer}</Text>
+                <BoxContent>
+                  <BoxInline w="100%" space="between">
+                    <SubText textColor="dark">Status</SubText>
+                    <Status status={item.Status as number}>
+                      {item.Status === 1 ? "Success" : "Failed"}
+                    </Status>
+                  </BoxInline>
+                  <BoxInline w="100%" space="between">
+                    <SubText textColor="dark">Step</SubText>
+                    <Span>{item.Step}</Span>
+                  </BoxInline>
+                </BoxContent>
+              </Card>
+            ))}
+        </BoxInline>
+        <BoxInline pad="16" w="50%" flex={1} wrap>
+          {csvData
+            .filter((item) => item.Status === 2)
+            .map((item, index) => (
+              <Card w="30%" key={index}>
+                <Text textColor="primary">{item.Customer}</Text>
+                <BoxContent>
+                  <BoxInline w="100%" space="between">
+                    <SubText textColor="dark">Status</SubText>
+                    <Status status={item.Status as number}>
+                      {item.Status === 1 ? "Success" : "Failed"}
+                    </Status>
+                  </BoxInline>
+                  <BoxInline w="100%" space="between">
+                    <SubText textColor="dark">Step</SubText>
+                    <Span>{item.Step}</Span>
+                  </BoxInline>
+                </BoxContent>
+              </Card>
+            ))}
+        </BoxInline>
+      </BoxContent>
     </DashboardContent>
   );
 };

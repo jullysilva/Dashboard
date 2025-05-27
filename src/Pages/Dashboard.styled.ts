@@ -14,23 +14,28 @@ export interface IText extends IDadhsboardProps {
   textColor: TPalette;
 }
 
-export const DashboardContent = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-items: center;
   flex-wrap: wrap;
+
+  padding: 2rem;
+  background-color: #f4f6f8;
+  min-height: 100vh;
 `;
 
-export const TitleHeader = styled.h1<IDadhsboardProps>`
-  ${({ theme, text = "black", bg = "white" }) => {
-    return {
-      color: text !== "black" ? theme.palette[text] : text,
-      backgroundColor: bg !== "white" ? theme.palette[bg] : bg,
-      margin: 0,
-      padding: "20px 0",
-      textAlign: "center",
-    };
-  }}
+export const Header = styled.h1`
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #111827;
+`;
+
+export const Cards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-rows: 150px;
+  gap: 1rem;
 `;
 
 export const Title = styled.p`
@@ -48,16 +53,6 @@ export const Text = styled.span<IText>`
   font-weight: 400;
 `;
 
-export const SubText = styled(Text)`
-  ${({ theme, textColor = "black" }) => {
-    return {
-      color: theme.palette[textColor],
-    };
-  }}
-  font-size: 1rem;
-  font-weight: 500;
-`;
-
 export const Span = styled.span`
   ${({ theme }) => {
     return {
@@ -69,25 +64,16 @@ export const Span = styled.span`
 
 export const Divider = styled.hr`
   border-top: 1px solid dark;
-  margin: 2px 32px;
+  margin: 15px 0px;
 `;
 
 export const Status = styled.p<{ status: number }>`
-  ${({ theme, status }) => {
-    const color =
-      status === 1 ? theme.palette["success"] : theme.palette["danger"];
-
-    return {
-      color: theme.palette["white"],
-      backgroundColor: color,
-      borderRadius: "45px",
-      border: `1px solid ${color}`,
-      width: "6rem",
-      height: "auto",
-      margin: "10px 0",
-      textAlign: "center",
-    };
-  }}
+  background-color: ${(p) => (p.status === 1 ? "#d4edda" : "#f8d7da")};
+  color: ${(p) => (p.status === 1 ? "#155724" : "#721c24")};
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.75rem;
 `;
 
 export const WidgetIcon = styled.div`

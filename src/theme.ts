@@ -3,14 +3,17 @@ export const theme = {
     white: "#fff",
     black: "#000",
 
-    primary: "#08164b",
-    secondary: "#f02886",
     light: "#f5edf6",
     dark: "#555555",
     primaryLight: "#f18abc",
     secondaryLight: "#747c9c",
 
-    danger: "#dc3545",
-    success: "#28a745",
+    bg: "#f4f6f8",
+    card: "#fff",
+    primary: "#4F46E5",
+    success: "#10B981",
+    danger: "#EF4444",
+    text: "#111827",
+    subtext: "#6B7280",
   },
 };

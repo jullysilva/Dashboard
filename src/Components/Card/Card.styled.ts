@@ -3,28 +3,41 @@ import { TPalette } from "src/Interfaces/TPalette";
 import styled from "styled-components";
 
 export interface ICardProps extends PropsWithChildren<{}> {
-  noPadding?: boolean;
   title?: string;
   w?: string;
   h?: string;
   color?: TPalette;
-  shadow?: boolean;
 }
 
-export const CardContainer = styled.div<ICardProps>`
-  ${({ noPadding = false, shadow = true, w, h }) => {
-    const [width, height] = buildSize(w, h);
+export const Card = styled.div<ICardProps>`
+  ${({ w, h }) => {
     return {
       backgroundColor: "white",
-      padding: noPadding ? 0 : 16,
-      borderRadius: 15,
-      margin: 8,
-      width: w ? width : "auto",
-      height,
-      boxShadow: shadow ? "0px 10px 15px -3px rgba(0,0,0,0.1)" : "none",
-      textWrap: "nowrap",
+      padding: "1.5rem",
+      borderRadius: 12,
+      display: "flex",
+      flexDirection: "column",
+      gap: "0.5rem",
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.07)",
     };
   }}
+
+  h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgb(66, 70, 78);
+  }
+
+  h4 {
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+
+  span {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #111827;
+  }
 `;
 
 export const CardTitle = styled.p<ICardProps>`
@@ -36,25 +49,3 @@ export const CardTitle = styled.p<ICardProps>`
     };
   }}
 `;
-
-export const TitleContainer = styled.div`
-  margin-bottom: 16px;
-`;
-
-export const buildSize = (w: ICardProps["w"], h: ICardProps["h"]) => {
-  const sizes = [w, h];
-  return sizes.map((s) => {
-    if (s !== "auto") {
-      if (typeof s === "string") {
-        if (s.includes("%") || s.includes("px")) {
-          return s;
-        }
-        return `${s}%`;
-      }
-      if (typeof s === "number") {
-        return `${s}%`;
-      }
-    }
-    return s;
-  });
-};

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import {
   Box,
-  DashboardContent,
+  Container,
   Divider,
   Span,
   Status,
-  SubText,
   Text,
   Title,
-  TitleHeader,
+  Header,
   WidgetIcon,
+  Cards,
 } from "./Dashboard.styled";
 import BoxInline from "src/Components/BoxContent/BoxInline";
 import Card from "src/Components/Card/Card";
@@ -31,7 +31,6 @@ import { Tooltip } from "react-tooltip";
 import { theme } from "src/theme";
 
 export interface DashboardProps {
-  widgets: null;
   title: string;
 }
 
@@ -85,18 +84,16 @@ export const Dashboard = ({ title }: DashboardProps) => {
   csvData.forEach((item) => console.log(item));
 
   return (
-    <DashboardContent>
-      <TitleHeader bg="primary" text="light">
-        {title}
-      </TitleHeader>
-      <BoxContent pad="16 32 0" w="100%">
+    <Container>
+      <Header>{title}</Header>
+      <BoxContent w="100%">
         <Span>
           As informações a seguir fornecem uma visão geral do desempenho do
           status dos clientes e seus devidos servidores, comtemplando o
           percentual de sucesso e a quantidade de migrações.
         </Span>
       </BoxContent>
-      <BoxInline pad="16">
+      <BoxInline marg="12 0" space="between">
         <Card w="30%">
           <Title>
             Status{" "}
@@ -180,7 +177,7 @@ export const Dashboard = ({ title }: DashboardProps) => {
           </BoxInline>
         </Card>
       </BoxInline>
-      <BoxContent w="100%" pad="0 0 0 32">
+      <BoxContent w="100%" pad="0">
         <Text textColor="primary">
           Customers{" "}
           <BiHelpCircle
@@ -193,50 +190,25 @@ export const Dashboard = ({ title }: DashboardProps) => {
         <Tooltip id="clients" />
       </BoxContent>
       <Divider />
-      <BoxContent w="100%" inline>
-        <BoxInline pad="16" w="50%" flex={1} wrap>
-          {csvData
-            .filter((item) => item.Status === 1)
-            .map((item, index) => (
-              <Card w="30%" key={index}>
-                <Text textColor="primary">{item.Customer}</Text>
-                <BoxContent>
-                  <BoxInline w="100%" space="between">
-                    <SubText textColor="dark">Status</SubText>
-                    <Status status={item.Status as number}>
-                      {item.Status === 1 ? "Success" : "Failed"}
-                    </Status>
-                  </BoxInline>
-                  <BoxInline w="100%" space="between">
-                    <SubText textColor="dark">Step</SubText>
-                    <Span>{item.Step}</Span>
-                  </BoxInline>
-                </BoxContent>
-              </Card>
-            ))}
-        </BoxInline>
-        <BoxInline pad="16" w="50%" flex={1} wrap>
-          {csvData
-            .filter((item) => item.Status === 2)
-            .map((item, index) => (
-              <Card w="30%" key={index}>
-                <Text textColor="primary">{item.Customer}</Text>
-                <BoxContent>
-                  <BoxInline w="100%" space="between">
-                    <SubText textColor="dark">Status</SubText>
-                    <Status status={item.Status as number}>
-                      {item.Status === 1 ? "Success" : "Failed"}
-                    </Status>
-                  </BoxInline>
-                  <BoxInline w="100%" space="between">
-                    <SubText textColor="dark">Step</SubText>
-                    <Span>{item.Step}</Span>
-                  </BoxInline>
-                </BoxContent>
-              </Card>
-            ))}
-        </BoxInline>
-      </BoxContent>
-    </DashboardContent>
+      <Cards>
+        {csvData.map((item, index) => (
+          <Card key={index}>
+            <h3>{item.Customer}</h3>
+            <BoxContent>
+              <BoxInline w="100%" space="between">
+                <h4>Status</h4>
+                <Status status={item.Status as number}>
+                  {item.Status === 1 ? "Success" : "Failed"}
+                </Status>
+              </BoxInline>
+              <BoxInline w="100%" space="between">
+                <h4>Step</h4>
+                <Span>{item.Step}</Span>
+              </BoxInline>
+            </BoxContent>
+          </Card>
+        ))}
+      </Cards>
+    </Container>
   );
 };

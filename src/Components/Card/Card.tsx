@@ -1,22 +1,18 @@
 import React from "react";
-import {
-  CardContainer,
-  CardTitle,
-  ICardProps,
-  TitleContainer,
-} from "./Card.styled";
+import { Card, CardTitle, ICardProps } from "./Card.styled";
 
-const Card: React.FC<ICardProps> = ({ children, ...CardContentSCProps }) => {
+const CardItem: React.FC<ICardProps> = ({
+  children,
+  ...CardContentSCProps
+}) => {
   return (
-    <CardContainer w={CardContentSCProps.w} h={CardContentSCProps.h}>
+    <Card w={CardContentSCProps.w} h={CardContentSCProps.h}>
       {CardContentSCProps.title && (
-        <TitleContainer>
-          <CardTitle>{CardContentSCProps.title}</CardTitle>
-        </TitleContainer>
+        <CardTitle>{CardContentSCProps.title}</CardTitle>
       )}
       {children}
-    </CardContainer>
+    </Card>
   );
 };
 
-export default Card;
+export default CardItem;

@@ -10,7 +10,8 @@ export interface IBoxContentProps extends PropsWithChildren<{}> {
   w?: string | number;
   h?: string | number;
   inline?: boolean;
-  center?: boolean;
+  centerContent?: boolean;
+  centerItems?: boolean;
   wrap?: boolean;
   flex?: number;
 }
@@ -24,7 +25,8 @@ export const BoxContentSC = styled.div<IBoxContentProps>`
     w = "auto",
     h = "auto",
     inline = false,
-    center = false,
+    centerContent = false,
+    centerItems = false,
     wrap = false,
     flex = 0,
   }) => {
@@ -39,8 +41,10 @@ export const BoxContentSC = styled.div<IBoxContentProps>`
       ...(flex && { flex }),
       "flex-direction": inline ? "row" : "column",
       alignItems: "baseline",
-      ...(center && {
+      ...(centerContent && {
         justifyContent: "center",
+      }),
+      ...(centerItems && {
         alignItems: "center",
       }),
       ...(wrap && {
@@ -53,14 +57,16 @@ export const BoxContentSC = styled.div<IBoxContentProps>`
 export interface IBoxSpaceProps extends IBoxContentProps {
   space?: "between" | "around" | "evenly";
   justify?: "start" | "end" | "center";
+  alignItems?: "center" | "flex-end";
 }
 
 export const BoxSpaceSC = styled(BoxContentSC)<IBoxSpaceProps>`
-  ${({ space, justify, inline = true }) => {
+  ${({ space, justify, alignItems, inline = true }) => {
     return {
       "flex-direction": inline ? "row" : "column",
       ...(space && { justifyContent: `space-${space}` }),
       ...(justify && { justifyContent: `flex-${justify}` }),
+      ...(alignItems && { alignItems: `${alignItems}` }),
     };
   }}
 `;
